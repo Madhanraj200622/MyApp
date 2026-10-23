@@ -1,10 +1,11 @@
 
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyApp - CI/CD Project</title>
+<title>MyApp CI/CD Project</title>
 
 <style>
 * {
@@ -16,158 +17,195 @@ body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
     color: white;
-    background:
-        radial-gradient(circle at 10% 15%, #bd43b8, transparent 35%),
-        radial-gradient(circle at 90% 85%, #168b85, transparent 35%),
-        linear-gradient(135deg, #39205e, #25164b);
+    background: linear-gradient(120deg, #a52bb5, #24165c, #008b91);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding: 30px 15px;
 }
 
-.container {
+.dashboard {
     width: 100%;
-    max-width: 850px;
-    padding: 38px;
+    max-width: 1050px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 24px;
-    background: rgba(255,255,255,0.09);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    backdrop-filter: blur(15px);
+    padding: 35px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 25px;
+    background: rgba(255,255,255,.09);
+    box-shadow: 0 20px 60px rgba(0,0,0,.2);
 }
 
-.tag {
+.badge {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 10px 25px;
     border-radius: 30px;
-    background: rgba(255,255,255,0.15);
-    font-size: 12px;
+    background: #7134a5;
+    font-size: 13px;
+    font-weight: bold;
     letter-spacing: 2px;
 }
 
-.rocket {
-    margin-top: 22px;
-    font-size: 42px;
+.icons {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.icons img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
 }
 
 h1 {
-    margin: 12px 0;
-    font-size: clamp(25px, 4vw, 38px);
+    font-size: clamp(27px, 4vw, 42px);
+    margin: 20px 0;
 }
 
-.subtitle {
-    color: #e2d9f4;
+h1 span {
+    color: #c477ff;
+}
+
+.description {
     line-height: 1.8;
+    color: #eee8ff;
+    font-size: 17px;
 }
 
 .status {
     display: inline-block;
-    margin: 22px 0;
-    padding: 14px 25px;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #00b98b, #38ed85);
-    color: white;
+    margin: 15px 0 25px;
+    padding: 15px 25px;
+    border-radius: 30px;
+    background: #00ae83;
     font-weight: bold;
-    box-shadow: 0 0 25px rgba(0,255,150,0.3);
 }
 
 .cards {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 18px;
+    gap: 15px;
 }
 
 .card {
     padding: 22px 10px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 16px;
+    background: rgba(255,255,255,.08);
 }
 
-.card .icon {
-    font-size: 28px;
+.card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 7px;
 }
 
 .card h3 {
     margin: 12px 0 8px;
-    font-size: 16px;
 }
 
 .card p {
-    margin: 0;
-    color: #b9ffd9;
-    font-size: 13px;
+    margin: 8px 0;
 }
 
-.footer {
-    margin-top: 28px;
-    color: #d8cbea;
-    font-size: 13px;
+.success {
+    color: #45ffb0;
+    font-weight: bold;
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 24px 16px;
+footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    color: #e5ddff;
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+    .dashboard {
+        padding: 22px 15px;
     }
 
     .cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+@media (max-width: 380px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="dashboard">
 
-    <div class="tag">CI/CD PROJECT DEMO</div>
+    <div class="badge">CI/CD PROJECT DEMO</div>
 
-    <div class="rocket">🚀</div>
+    <div class="icons">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" alt="Maven">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" alt="Apache">
+    </div>
 
-    <h1>Welcome to MyApp CI/CD Project!</h1>
+    <h1>Welcome to <span>MyApp</span> CI/CD Project!</h1>
+    <h1>Madhanraj M</h1>
 
-    <p class="subtitle">
-        This website is built and deployed using
-        <strong>Jenkins, Maven</strong><br>
-        and <strong>Apache Tomcat</strong>.
+    <p class="description">
+        This website is built and deployed using <b>Jenkins, Maven</b><br>
+        and <b>Apache Tomcat</b>.
     </p>
 
-    <div class="status">● Build Status: Successful</div>
+    <div class="status">&#10004; Build Status: Successful</div>
 
     <div class="cards">
 
         <div class="card">
-            <div class="icon">💻</div>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
             <h3>Code</h3>
-            <p>✓ GitHub Connected</p>
+            <p>GitHub Connected</p>
+            <p class="success">&#9679; Connected</p>
         </div>
 
         <div class="card">
-            <div class="icon">📦</div>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" alt="Maven">
             <h3>Maven Build</h3>
-            <p>✓ WAR Packaged</p>
+            <p>WAR Packaged</p>
+            <p class="success">&#9679; Success</p>
         </div>
 
         <div class="card">
-            <div class="icon">⚙️</div>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins">
             <h3>Jenkins</h3>
-            <p>✓ Build Passed</p>
+            <p>Build Passed</p>
+            <p class="success">&#9679; Success</p>
         </div>
 
         <div class="card">
-            <div class="icon">🌐</div>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" alt="Apache">
             <h3>Tomcat 10.1</h3>
-            <p>✓ App Deployed</p>
+            <p>App Deployed</p>
+            <p class="success">&#9679; Deployed</p>
         </div>
 
     </div>
 
-    <div class="footer">
-        Java Web Application | Maven | GitHub | Jenkins | Tomcat
-    </div>
+    <footer>
+        Java Web Application &nbsp; | &nbsp; Maven &nbsp; | &nbsp;
+        GitHub &nbsp; | &nbsp; Jenkins &nbsp; | &nbsp; Tomcat
+    </footer>
 
 </div>
 </body>
